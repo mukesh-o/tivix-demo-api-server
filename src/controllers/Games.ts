@@ -27,7 +27,7 @@ class GamesController {
       },
     })
       .then(({ data }) => {
-        res.json({
+        return res.json({
           statusCode: httpStatusCode.OK,
           data,
         });
@@ -39,13 +39,6 @@ class GamesController {
           },
         });
       });
-
-    return res.json({
-      error: {
-        statusCode: httpStatusCode.INTERNAL_SERVER_ERROR,
-        message: "Failed to get games list",
-      },
-    });
   }
 
   public static async getGameDetails(req: Request, res: Response) {
@@ -69,7 +62,7 @@ class GamesController {
       }
     )
       .then(({ data }) => {
-        res.json({
+        return res.json({
           statusCode: httpStatusCode.OK,
           data,
         });
@@ -81,13 +74,6 @@ class GamesController {
           },
         });
       });
-
-    return res.json({
-      error: {
-        statusCode: httpStatusCode.INTERNAL_SERVER_ERROR,
-        message: "Failed to get game details",
-      },
-    });
   }
 }
 
