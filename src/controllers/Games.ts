@@ -7,7 +7,7 @@ import { IGamesListAPIResponse, IGameDetailsAPIResponse } from "../interfaces";
 
 class GamesController {
   public static async getGamesList(req: Request, res: Response) {
-    const recordsPerPage = 10;
+    const recordsPerPage = 12;
     const pageNumber = Number(req.query.page);
 
     if (!pageNumber) {
@@ -28,8 +28,7 @@ class GamesController {
     })
       .then(({ data }) => {
         return res.json({
-          statusCode: httpStatusCode.OK,
-          data,
+          ...data,
         });
       })
       .catch((err: AxiosError) => {
@@ -63,8 +62,7 @@ class GamesController {
     )
       .then(({ data }) => {
         return res.json({
-          statusCode: httpStatusCode.OK,
-          data,
+          ...data,
         });
       })
       .catch((err: AxiosError) => {
